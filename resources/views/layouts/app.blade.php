@@ -48,6 +48,7 @@
         <div class="wrapper" id="wrapper">
             @include('partial.frontend.header')
         <main class="py-4">
+            @include('partial.flash')
             @yield('content')
         </main>
          
@@ -59,6 +60,8 @@
         <!-- Scripts -->
         <script src="{{asset('js/app.js') }}"></script>
 	    <script src="{{asset('frontend/js/plugins.js')}}"></script>
-	    <script src="{{asset('frontend/js/active.js')}}"></script>
+        <script src="{{asset('frontend/js/active.js')}}"></script>
+        <script src="{{asset('frontend/js/custom.js')}}"></script>
+        
 </body>
 </html>

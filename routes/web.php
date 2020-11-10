@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,10 +42,7 @@ Route::get('/email/verify/{id}/{hash}',         ['as' => 'admin.verification.ver
 Route::post('email/resend',                     ['as' => 'admin.verification.resend',             'uses' => 'Backend\Auth\VerificationController@resend']);
 });
 
-Auth::routes();
+///###########################################################################
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-route::get('test', function(){
-    return view('test');
-});
+Route::get('/{post_slug}',                      ['as' => 'posts.show',                            'uses'=>'Frontend\indexcontroller@post_show']);
+Route::post('/{post_comment}',                  ['as' => 'posts.add.comment',                     'uses'=>'Frontend\indexcontroller@store_comment']);
