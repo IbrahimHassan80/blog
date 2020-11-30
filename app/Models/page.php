@@ -35,7 +35,7 @@ class page extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-           public function media()
+    public function media()
     {
         return $this->hasMany(PostMedia::class, 'post_id', 'id');
     }

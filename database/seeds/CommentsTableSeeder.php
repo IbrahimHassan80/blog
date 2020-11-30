@@ -15,12 +15,12 @@ class CommentsTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker      = Factory::create();
+        $faker       = Factory::create();
         $comments    = [];
         $users       = collect(User::where('id', '>', 2)->get()->modelKeys());
         $posts       = collect(Post::wherePostType('post')->whereStatus(1)->whereCommentAble(1)->get());
 
-        for($i = 0 ; $i < 5000; $i++) {
+        for( $i = 0; $i < 5000; $i++ ) {
 
             $selected_post = $posts->random();
             $post_date = $selected_post->created_at->timestamp;

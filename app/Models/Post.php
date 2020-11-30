@@ -8,10 +8,10 @@ use App\Models\Comment;
 use App\Models\Categorie;
 use App\Models\User;
 use App\Models\PostMedia;
-
+use Nicolaslopezj\Searchable\SearchableTrait;
 class Post extends Model
 {
-  use Sluggable;
+  use Sluggable, SearchableTrait;
  
  protected $guarded = [];
  
@@ -23,6 +23,13 @@ class Post extends Model
             ]
         ];
     }
+
+    protected $searchable = [
+        'columns' => [
+            'posts.title'       =>  10,
+            'posts.description' => 10
+        ],
+    ];
 
     // Relation Ship //
     public function category()

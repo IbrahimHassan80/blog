@@ -12,15 +12,15 @@
             <div class="col-lg-8 d-none d-lg-block">
                 <nav class="mainmenu__nav">
                     <ul class="meninmenu d-flex justify-content-start">
-                        <li class="drop with--one--item"><a href="index.html">Home</a></li>
-                        <li class="drop with--one--item"><a href="index.html">About Us</a></li>
-                        <li class="drop with--one--item"><a href="index.html">Our Vision</a></li>
-                         
-                        <li class="drop"><a href="blog.html">Blog</a>
+                        <li class="drop with--one--item"><a href="{{route('frontend.index')}}">Home</a></li>
+                        <li class="drop with--one--item"><a href="">About Us</a></li>
+                        <li class="drop with--one--item"><a href="">Our Vision</a></li>                         
+                        <li class="drop"><a href="javascript:void(0);">Blog</a>
                             <div class="megamenu dropdown">
                                 <ul class="item item01">
-                                    <li><a href="blog.html">Blog Page</a></li>
-                                    <li><a href="blog-details.html">Blog Details</a></li>
+                                    <li><a href="blog.html">un-cateorized</a></li>
+                                    <li><a href="blog-details.html">Flowers</a></li>
+                                    <li><a href="blog-details.html">kitchen</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -190,11 +190,12 @@
                        
                         <li><a href="blog.html">Blog</a>
                             <ul>
-                                <li><a href="blog.html">Blog Page</a></li>
-                                <li><a href="blog-details.html">Blog Details</a></li>
+                                <li><a href="blog.html">un-cateorized</a></li>
+                                <li><a href="blog-details.html">Flowers</a></li>
+                                <li><a href="blog-details.html">kitchen</a></li>
                             </ul>
                         </li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </nav>
             </div>

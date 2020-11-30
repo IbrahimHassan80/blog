@@ -43,6 +43,12 @@ Route::post('email/resend',                     ['as' => 'admin.verification.res
 });
 
 ///###########################################################################
+Route::get('/search',                           ['as' => 'frontend.search',            'uses' => 'Frontend\indexcontroller@search']);
+Route::get('/contact_us',                       ['as' => 'show_contactus',             'uses' => 'Frontend\indexcontroller@contact_us']);
+Route::post('/contact_us_store',                ['as' => 'store_contactus',            'uses'=> 'Frontend\indexcontroller@do_contactus']);
+Route::post('/archive/{data}',                  ['as' => 'fronyend.archive.post',      'uses'=> 'Frontend\indexcontroller@archive']);
+Route::get('/category/{category_slug}',         ['as'=> 'frontend.category.posts',     'uses'=> 'Frontend\indexcontroller@category']);
+Route::get('/author/{username}',                ['as'=> 'frontend.author.posts',       'uses'=> 'Frontend\indexcontroller@author']);
+Route::get('/{post_slug}',                      ['as' => 'posts.show',                 'uses'=>'Frontend\indexcontroller@post_show']);
+Route::post('/{post_comment}',                  ['as' => 'posts.add.comment',          'uses'=>'Frontend\indexcontroller@store_comment']);
 
-Route::get('/{post_slug}',                      ['as' => 'posts.show',                            'uses'=>'Frontend\indexcontroller@post_show']);
-Route::post('/{post_comment}',                  ['as' => 'posts.add.comment',                     'uses'=>'Frontend\indexcontroller@store_comment']);
