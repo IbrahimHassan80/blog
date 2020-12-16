@@ -47,4 +47,13 @@ class VerificationController extends Controller
                         : view('frontend.auth.verify');
     }
 
+    protected function verified(Request $request)
+    {
+        $request->user()->update(['status' => 1]);
+        return redirect()->route('frontend.index')->with([
+            'message' => 'Your account registered successfully, Please check your email to activate your account.',
+            'alert-type' => 'success'
+        ]);
+    }
+
 }

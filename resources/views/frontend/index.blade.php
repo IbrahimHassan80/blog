@@ -22,7 +22,7 @@
                         <div class="content">
                             <h4><a href="{{route('posts.show', $post->slug)}}">{{$post->title}}</a></h4>
                             <ul class="post__meta">
-                                <li>Posts by : <a href="#">{{$post->user->name}}</a></li>
+                                <li>Posts by : <a href="{{route('frontend.author.posts',$post->user->username)}}">{{$post->user->name}}</a></li>
                                 <li class="post_separator">/</li>
                                 <li>{{$post->created_at->format('M d Y')}}</li>
                             </ul>

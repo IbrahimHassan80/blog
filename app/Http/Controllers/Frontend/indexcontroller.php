@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\post;
 use App\Models\Contact;
+use App\Models\categorie;
 use App\Http\Requests\validate_comment;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\valid_contactus;
+use App\Models\User;
 
 class indexcontroller extends Controller
 {
@@ -47,7 +49,7 @@ class indexcontroller extends Controller
         if($post){
             return view('frontend.show_page', compact('post'));
         } else{
-            return "failed"; //redirect()->route('frontend.index');
+           return redirect()->route('frontend.index');
         }
     }
     
@@ -116,4 +118,56 @@ class indexcontroller extends Controller
        
     }
 
+    /// Sidebar Controller ///
+    public function category($slug){
+        $category = categorie::whereSlug($slug)->orWhere('id', $slug)->whereStatus(1)->first()->id;
+        
+        if($category){
+            $posts = Post::with(['media','user','category'])
+            ->withCount('approved_comments')
+            ->wherepostType('post')
+            ->whereCategoryId($category)
+            ->whereStatus(1)
+            ->orderBy('id','desc')
+            ->paginate(5);
+            return view('frontend.index', compact('posts'));
+        }    
+            return redirect()->route('frontend.index');
+            
+    }
+
+    public function archive($date){
+        $explode_date = explode('-', $date);
+        $month = $explode_date[0];
+        $year = $explode_date[1];
+
+        $posts = Post::with(['media', 'user', 'category'])
+        ->withCount('approved_comments')
+        ->whereMonth('created_at', $month)
+        ->whereYear('created_at', $year)
+        ->wherepostType('post')
+        ->whereStatus(1)
+        ->orderBy('id','desc')
+        ->paginate(5);
+        if($posts){
+            return view('frontend.index', compact('posts'));
+        }
+            return redirect()->route('frontend.index');
+    }
+
+    public function author($user_name){
+        $user = User::whereUsername($user_name)->whereStatus(1)->first()->id;
+
+        if($user){
+            $posts = Post::with(['media','user','category'])
+            ->withCount('approved_comments')
+            ->wherepostType('post')
+            ->whereUserId($user)
+            ->whereStatus(1)
+            ->orderBy('id','desc')
+            ->paginate(5);
+            return view('frontend.index', compact('posts'));
+        }
+          return redirect()->route('frontend.index');
+    }
 }

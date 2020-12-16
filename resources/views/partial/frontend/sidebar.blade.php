@@ -63,7 +63,7 @@
         <h3 class="widget-title">Categories</h3>
         <ul>
             @foreach($global_categories as $global_categorie)
-        <li><a href="#">{{$global_categorie->name}}</a></li>
+        <li><a href="{{route('frontend.category.posts', $global_categorie->slug)}}">{{$global_categorie->name}}</a></li>
             @endforeach
         </ul>
     </aside>
@@ -73,7 +73,7 @@
         <h3 class="widget-title">Archives</h3>
         <ul>
             @foreach($global_archives as $key => $val)
-            <li><a href="">{{ date("F", mktime(0, 0, 0, $key, 1)) . ' ' . $val }}</a></li>
+        <li><a href="{{route('fronyend.archive.post', $key.'-'.$val)}}">{{ date("F", mktime(0, 0, 0, $key, 1)) . ' ' . $val }}</a></li>
           
             @endforeach
         </ul>
