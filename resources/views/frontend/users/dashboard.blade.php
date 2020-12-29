@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+<div class="page-blog bg--white section-padding--lg blog-sidebar right-sidebar">
+    <div class="container">
+        <div class="row">
 <div class="col-lg-9 col-12">
     <div class="table-responsive">
         <table class="table">
@@ -18,9 +21,9 @@
                     <td><a href="">{{ $post->comments_count }}</a></td>
                     <td>{{ $post->status }}</td>
                     <td>
-                        <a href="" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                        <a href="" onclick="if(confirm('Are You sure to Delete This Post ?')){document.getElementById('post-delete-{{$post->id}}').submit();} else{return false;}"  class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
-                        <form action="" method="post" id="post-delete-{{$post->id}}" style="display: none;">
+                        <a href="{{route('users.post.edit', $post->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                        <a href="javascript:void(0)" onclick="if(confirm('Are You sure to Delete This Post ?')){document.getElementById('post-delete-{{$post->id}}').submit();} else{return false;}"  class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                        <form action="{{route('users.post.destroy', $post->id)}}" method="post" id="post-delete-{{$post->id}}" style="display: none;">
                             @csrf
                             @method('DELETE')
                         </form>
@@ -41,9 +44,12 @@
 
     </div>
 </div>
-
 <div class="col-lg-3 col-12 md-mt-40 sm-mt-40">
     @include('partial.frontend.users.sidebar')
 </div>
+  </div>
+    </div>
+      </div>
+
 
 @endsection

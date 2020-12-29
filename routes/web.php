@@ -29,9 +29,23 @@ Route::post('email/resend',                     ['as' => 'verification.resend', 
 
 Route::group(['middleware' => 'verified'], function () {
 Route::get('/dashboard',                        ['as' => 'frontend.dashboard',              'uses' => 'Frontend\userscontroller@index']);
-Route::get('/create-post',                      ['as' => 'users.post.create',               'uses' =>  'Frontend\userscontroller@create']);
-Route::post('/store-post',                      ['as' => 'users.post.store',                'uses' =>  'Frontend\userscontroller@store']);
 
+Route::get('/edit-info',                        ['as' =>  'user.edit_info',                 'uses' => 'Frontend\userscontroller@edit_info']);
+Route::post('/update-info',                     ['as' =>  'users.update_info',              'uses' => 'Frontend\userscontroller@update_info']);
+Route::post('/update-password',                 ['as' =>  'users.update_password',          'uses' => 'Frontend\userscontroller@update_password']);
+
+Route::get('/create-post',                      ['as' => 'users.post.create',               'uses' =>  'Frontend\userscontroller@create_post']);
+Route::post('/store-post',                      ['as' => 'users.post.store',                'uses' =>  'Frontend\userscontroller@store_post']);
+
+Route::get('/edit-post/{post_id}',              ['as' =>  'users.post.edit',                 'uses' =>  'Frontend\userscontroller@edit_post']);
+Route::put('/post-update/{post_id}',            ['as' =>  'users.post.update',               'uses' =>  'Frontend\userscontroller@update_post']);
+Route::post('/destroy-post-media/{media}',      ['as' =>  'users.post.media.destroy',        'uses' =>  'Frontend\userscontroller@destroy_post_media']);
+Route::delete('/post-destroy/{media}',          ['as' =>  'users.post.destroy',              'uses' =>  'Frontend\userscontroller@post_destroy']);
+
+Route::get('/comments',                         ['as' =>   'users.comments',                 'uses' =>  'Frontend\userscontroller@show_comments']);
+Route::get('/edit-comment/{comment_id}',        ['as' =>   'users.comments.edit',            'uses' =>  'Frontend\userscontroller@edit_comments']);
+Route::put('/update-comment/{comment_id}',      ['as' =>   'users.comments.update',          'uses' =>  'Frontend\userscontroller@update_comments']);
+Route::delete('/delete-comment/{comment_id}',      ['as' =>   'users.comments.delete',          'uses' =>  'Frontend\userscontroller@delete_comments']);
 });
 
 /// Back End Routes //
