@@ -5,7 +5,12 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-@endif
+    
+    <?php 
+    session_start();
+    unset($_SESSION['message']); 
+    ?>
+    @endif
 
 @if (session('resent'))
      <div class="alert alert-success alert-dismissible fade show" role="alert" id="aler-message">

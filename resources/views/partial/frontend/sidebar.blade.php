@@ -12,7 +12,7 @@
     <!-- End Single Widget -->
     <!-- Start Single Widget -->
     <aside class="widget recent_widget">
-        <h3 class="widget-title">Recent</h3>
+        <h3 class="widget-title">Recent Posts</h3>
         <div class="recent-posts">
             <ul>
                 @foreach($recent_posts as $recent_post )
@@ -50,7 +50,7 @@
                     </div>
                     <div class="content">
                         <p>{{$recent_comment->name}} says:</p>
-                    <a href="#">{{\illuminate\support\str::limit($recent_comment->comment, 25, '...')}}</a>
+                    <a href="{{route('posts.show', $recent_comment->post->slug)}}">{{\illuminate\support\str::limit($recent_comment->comment, 25, '...')}}</a>
                     </div>
                 </div>
             </li>

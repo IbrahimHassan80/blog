@@ -49,7 +49,7 @@ class ViewServiceProvider extends ServiceProvider
                 $recent_posts = Cache::get('recent_posts');
              // ------------------------------------------- //
                if(!Cache::has('recent_comments')){
-                   $recent_comments = comment::whereStatus(1)->orderBy('id', 'desc')->limit(5)->get();
+                   $recent_comments = comment::with('post')->whereStatus(1)->orderBy('id', 'desc')->limit(5)->get();
                    Cache::remember('recent_comments', 3600, function() use($recent_comments){
                        return $recent_comments;
                    });

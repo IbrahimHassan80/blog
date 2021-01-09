@@ -31,6 +31,12 @@ class Post extends Model
         ],
     ];
 
+    public function scopeActive($query){
+        return $query->where('status', 1); 
+    }
+    public function scopePosttype($query){
+        return $query->where('Post_type', 'post');
+    }
     // Relation Ship //
     public function category()
     {
